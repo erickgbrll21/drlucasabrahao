@@ -153,11 +153,15 @@ export function Hero() {
           </ul>
           <a
             href={whatsappGreeting}
-            className="mt-9 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-full px-6 text-lg font-medium transition-colors duration-200 hover:bg-[#466033]"
+            className="group relative mt-9 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full px-6 text-lg font-medium shadow-[0_10px_28px_rgba(51,70,35,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#466033] hover:shadow-[0_16px_32px_rgba(51,70,35,0.28)]"
             style={{ backgroundColor: forest, color: buttonInk }}
             target="_blank"
             rel="noopener noreferrer"
           >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-[#e7cd96]/45 to-transparent motion-safe:animate-[hero-sheen_3.4s_ease-in-out_infinite]"
+            />
             <CalendarMark />
             Agendar Minha Avaliação
             <span className="sr-only"> pelo WhatsApp (abre em uma nova aba)</span>

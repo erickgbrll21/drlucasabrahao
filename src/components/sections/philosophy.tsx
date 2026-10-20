@@ -10,6 +10,7 @@ import { philosophy } from "@/data/site";
 const topicIcons: LucideIcon[] = [ScanFace, Orbit, ShieldCheck];
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 export function PhilosophySection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,23 +64,28 @@ export function PhilosophySection() {
 
     const headerOffset = () => document.querySelector("header")?.offsetHeight ?? 0;
     const root = document.documentElement;
+    const coarse = window.matchMedia("(max-width: 1023px), (pointer: coarse)").matches;
 
     const trigger = ScrollTrigger.create({
       trigger: section,
       start: () => `top ${headerOffset()}px`,
       end: () => `+=${window.innerHeight * topics.length}`,
       pin: true,
-      anticipatePin: 1,
-      snap: {
-        snapTo: (value: number) => {
-          const step = 1 / topics.length;
-          const index = Math.min(topics.length - 1, Math.floor(value * topics.length));
-          return index * step + step / 2;
-        },
-        duration: { min: 0.25, max: 0.45 },
-        delay: 0.06,
-        ease: "power2.inOut",
-      },
+      anticipatePin: coarse ? 0 : 1,
+      ...(coarse
+        ? {}
+        : {
+            snap: {
+              snapTo: (value: number) => {
+                const step = 1 / topics.length;
+                const index = Math.min(topics.length - 1, Math.floor(value * topics.length));
+                return index * step + step / 2;
+              },
+              duration: { min: 0.25, max: 0.45 },
+              delay: 0.06,
+              ease: "power2.inOut",
+            },
+          }),
       onToggle: (self) => {
         root.style.scrollBehavior = self.isActive ? "auto" : "";
       },
@@ -102,7 +108,7 @@ export function PhilosophySection() {
       className="relative h-[calc(100svh-4.75rem)] motion-reduce:h-auto sm:h-[calc(100svh-6rem)]"
       aria-labelledby="filosofia-title"
     >
-      <div className="relative mx-auto grid h-full min-h-0 max-w-6xl grid-rows-[auto_minmax(0,1fr)] items-stretch gap-3 px-5 pt-6 sm:gap-4 sm:pt-8 lg:max-w-[90rem] lg:grid-cols-[auto_minmax(0,1fr)] lg:grid-rows-1 lg:gap-14 lg:pt-12">
+      <div className="relative mx-auto grid h-full min-h-0 max-w-6xl content-center items-center px-5 pt-6 sm:pt-8 lg:max-w-[90rem] lg:content-stretch lg:grid-cols-[auto_minmax(0,1fr)] lg:items-stretch lg:gap-14 lg:pt-12">
         <div className="min-h-0 text-gold lg:order-2 lg:max-w-xl lg:self-center">
           <h2
             id="filosofia-title"
@@ -143,7 +149,7 @@ export function PhilosophySection() {
             {philosophy.points[0].title}
           </p>
         </div>
-        <div className="relative h-full min-h-0 w-full justify-self-center [container-type:size] lg:order-1 lg:w-auto lg:justify-self-start lg:[container-type:normal]">
+        <div className="relative hidden h-full min-h-0 w-full justify-self-center lg:order-1 lg:block lg:w-auto lg:justify-self-start">
           <div className="absolute bottom-0 left-1/2 aspect-[1024/1110] w-[min(100cqw,calc(100cqh*1024/1110))] -translate-x-1/2 lg:relative lg:bottom-auto lg:left-0 lg:h-full lg:w-auto lg:translate-x-0 lg:aspect-auto">
             <div
               aria-hidden="true"

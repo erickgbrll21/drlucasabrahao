@@ -30,7 +30,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-color: var(--brass) var(--paper);
 }
 
@@ -71,6 +71,17 @@ main :is(h1, h2):not(#hero-title)::after {
 #agendar :is(h1, h2)::after,
 #programas-title::after {
   background: var(--gold-bright);
+}
+
+@keyframes hero-sheen {
+  0%,
+  58% {
+    transform: translateX(-130%);
+  }
+
+  100% {
+    transform: translateX(130%);
+  }
 }
 
 main a[href]:not(.inline-flex):hover {
