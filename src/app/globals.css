@@ -7,7 +7,9 @@
   --ink-soft: #3f3832;
   --brass: #6b4f2e;
   --brass-bright: #e0c48a;
-  --line: #d4cbbd;
+  --gold: #8a6630;
+  --gold-bright: #c4a36a;
+  --line: #dcc9a8;
   --danger: #8d2c2c;
   color-scheme: light;
 }
@@ -19,6 +21,8 @@
   --color-ink-soft: var(--ink-soft);
   --color-brass: var(--brass);
   --color-brass-bright: var(--brass-bright);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
   --color-line: var(--line);
   --color-danger: var(--danger);
   --font-display: var(--font-display), "Segoe UI", sans-serif;
@@ -38,17 +42,39 @@ body {
 }
 
 ::selection {
-  background: var(--ink);
+  background: var(--gold);
   color: var(--paper);
 }
 
 :focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
-summary::-webkit-details-marker {
-  display: none;
+#filosofia,
+#atuacao,
+#programas,
+#sobre,
+#agendar {
+  scroll-margin-top: 6rem;
+}
+
+main :is(h1, h2):not(#hero-title)::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  margin-top: 1.15rem;
+  background: var(--gold);
+}
+
+#agendar :is(h1, h2)::after,
+#programas-title::after {
+  background: var(--gold-bright);
+}
+
+main a[href]:not(.inline-flex):hover {
+  color: var(--gold);
 }
 
 @media (prefers-reduced-motion: reduce) {

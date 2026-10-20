@@ -5,7 +5,7 @@ const variants = {
   solid:
     "bg-ink text-paper hover:bg-brass",
   line:
-    "border border-current bg-transparent text-inherit hover:bg-ink hover:text-paper",
+    "border border-gold-bright bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper",
   inverse:
     "bg-paper text-ink hover:bg-brass-bright",
   ghost:

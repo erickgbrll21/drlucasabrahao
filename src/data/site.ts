@@ -161,32 +161,10 @@ export const testimonial = {
   ],
 } as const;
 
-export const faqs = [
-  {
-    question: "Onde o Dr. Lucas atende?",
-    answer:
-      "Em Catalão (GO), na R. Augusto Neto, 11, São João; em Goiânia (GO); e em consultas online para pacientes no Brasil. O endereço de Goiânia não está publicado neste site.",
-  },
-  {
-    question: "Como agendar uma consulta?",
-    answer:
-      "O agendamento é feito com a equipe pelo WhatsApp (64) 98116-8122. Não há outro sistema de agenda publicado.",
-  },
-  {
-    question: "O que a consulta inclui?",
-    answer:
-      "Avaliação clínica completa, análise de bioimpedância de última geração e estruturação de rotina alimentar personalizada.",
-  },
-  {
-    question: "Qual é o registro profissional?",
-    answer: "Dr. Lucas Abrahão Ferreira, CRM GO 19862.",
-  },
-] as const;
-
 export const nav = [
-  { href: "/sobre", label: "O Instituto" },
-  { href: "/servicos", label: "Áreas" },
-  { href: "/contato", label: "Contato" },
+  { href: "/#sobre", label: "O Instituto" },
+  { href: "/#atuacao", label: "Áreas" },
+  { href: "/#agendar", label: "Contato" },
 ] as const;
 
 export const imageSources = {
